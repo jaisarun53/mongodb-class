@@ -68,26 +68,46 @@ use("relations");
 //     ObjectId("65d5ab5455c67737d8468c51"),
 //     ObjectId("65d5ab5455c67737d8468c52"),
 //   ],
-// });
-db.students.aggregate([
-  {
-    $match: {},
-  },
-  {
-    $lookup: {
-      from: "courses",
-      localField: "enrolledCourseId",
-      foreignField: "_id",
-      as: "courseDetail",
-    },
-  },
-  {
-    $project: {
-      name: 1,
-      address: 1,
-      email: 1,
-      "courseDetail.name": 1,
-      "courseDetail.duration": 1,
-    },
-  },
-]);
+// // });
+// db.students.aggregate([
+//   {
+//     $match: {},
+//   },
+//   {
+//     $lookup: {
+//       from: "courses",
+//       localField: "enrolledCourseId",
+//       foreignField: "_id",
+//       as: "courseDetail",
+//     },
+//   },
+//   {
+//     $project: {
+//       name: 1,
+//       address: 1,
+//       email: 1,
+//       "courseDetail.name": 1,
+//       "courseDetail.duration": 1,
+//     },
+//   },
+// ]);
+
+// db.courses.aggregate([
+//   { $match: {} },
+//   {
+//     $lookup: {
+//       from: "students",
+//       localField: "_id",
+//       foreignField: "enrolledCourseId",
+//       as: "studentData",
+//     },
+//   },
+//   {
+//     $project: {
+//       name: 1,
+//       duration: 1,
+//       "studentData.name": 1,
+//       "studentData.email": 1,
+//     },
+//   },
+// ]);
